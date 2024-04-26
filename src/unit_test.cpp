@@ -38,9 +38,9 @@ TEST(HW3Test, TEST4) {
     BST::Node right{10, nullptr, nullptr};
     BST::Node node{10, &left, &right};
 
-    std::cout << "adress of node: " << &node << std::endl;
-    std::cout << "adress of left: " << &left << std::endl;
-    std::cout << "adress of right: " << &right << std::endl;
+    std::cout << "address of node: " << &node << std::endl;
+    std::cout << "address of left: " << &left << std::endl;
+    std::cout << "address of right: " << &right << std::endl;
     std::cout << std::string(80, '*') << std::endl;
     std::cout << "PRINT A NODE" << std::endl;
     std::cout << node << std::endl;
@@ -281,9 +281,9 @@ TEST(HW3Test, TEST19) {
 
     EXPECT_TRUE(bst.delete_node(10)); // only left child
 
-    // the remainig nodes should not be regenerated 
+    // the remaining nodes should not be regenerated 
     // => address of remaning nodes before and after deletion should be the same
-    // when deleting a node: just reconnect the needed parrents and childs
+    // when deleting a node: just reconnect the needed parents and childs
     EXPECT_EQ(*bst.find_node(5), address_of_5);
     EXPECT_EQ(*bst.find_node(2), address_of_2);
 
@@ -331,9 +331,9 @@ TEST(HW3Test, TEST21) {
 
     EXPECT_TRUE(bst.delete_node(50)); // only left child
 
-    // the remainig nodes should not be regenerated 
-    // => address of remaning nodes before and after deletion should be the same
-    // when deleting a node: just reconnect the needed parrents and childs
+    // the remaining nodes should not be regenerated 
+    // => address of remaining nodes before and after deletion should be the same
+    // when deleting a node: just reconnect the needed parents and childs
     EXPECT_EQ(*bst.find_node(60), address_of_60);
     EXPECT_EQ(*bst.find_node(75), address_of_75);
 }
@@ -450,11 +450,11 @@ TEST(HW3Test, TEST28) {
     bst.add_node(22);
 
     int test_value{bst.get_root()->left->right->value};
-    BST::Node* adddress_of_root{*bst.find_node(25)};
+    BST::Node* address_of_root{*bst.find_node(25)};
 
     BST move{};
     move = std::move(bst);
-    EXPECT_EQ(adddress_of_root, move.get_root());
+    EXPECT_EQ(address_of_root, move.get_root());
     EXPECT_EQ(test_value, move.get_root()->left->right->value);
 }
 
