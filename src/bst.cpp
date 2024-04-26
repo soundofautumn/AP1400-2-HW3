@@ -1,6 +1,7 @@
 #include "bst.h"
 #include <queue>
 #include <iostream>
+#include <iomanip>
 
 BST::Node::Node(int value, Node *left, Node *right) : value(value), left(left), right(right) {
 }
@@ -11,7 +12,11 @@ BST::Node::Node() : value(0), left(nullptr), right(nullptr) {
 BST::Node::Node(const BST::Node &node) = default;
 
 std::ostream &operator<<(std::ostream &os, const BST::Node &node) {
-    os << node.value;
+    os << std::left;
+    os << std::setw(14) << &node
+       << "  =>  value:" << std::setw(2) << node.value
+       << "      left:" << std::setw(14) << node.left
+       << "      right:" << std::setw(14) << node.right;
     return os;
 }
 
@@ -183,7 +188,21 @@ BST &BST::operator=(BST &&bst) noexcept {
     return *this;
 }
 
+//    ********************************************************************************
+//    0x188dee70       => value:25        left:0x188dedd0      right:0x188dedf0
+//    0x188dedd0       => value:10        left:0x188dee30      right:0x188ded90
+//    0x188dedf0       => value:50        left:0               right:0x188dee50
+//    0x188dee30       => value:7         left:0               right:0
+//    0x188ded90       => value:15        left:0               right:0
+//    0x188dee50       => value:53        left:0               right:0
+//    binary search tree size: 6
+//    ********************************************************************************
 std::ostream &operator<<(std::ostream &os, const BST &bst) {
-    bst.bfs([&os](BST::Node *&node) { os << *node << " "; });
+    os << std::string(80, '*') << std::endl;
+    bst.bfs([&os](BST::Node *&node) {
+        os << *node << std::endl;
+    });
+    os << "binary search tree size: " << bst.length() << std::endl;
+    os << std::string(80, '*') << std::endl;
     return os;
 }
