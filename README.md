@@ -58,7 +58,7 @@ public:
     size_t length();
     bool add_node(int value);
     Node** find_node(int value);
-    Node** find_parrent(int value);
+    Node** find_parent(int value);
     Node** find_successor(int value);
     bool delete_node(int value);
 
@@ -85,7 +85,7 @@ adds a new node to BST in the proper place. **note.** the user should not be abl
 - **find_node**
 finds the node in tree with the specified value and returns a pointer to the pointer of the node. </br> **note.** do not use bfs algorithm to find the nod, instead use the property of binary search trees: *that is why we use them in the first place*.
 
-- **find_parrent**
+- **find_parent**
 finds the parrent node of a node with specified value and returns a pointer to the pointer of that parrent. </br> **note.** do not use bfs algorithm to find the node.
 
 - **find_successor**
